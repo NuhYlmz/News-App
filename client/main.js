@@ -4,7 +4,6 @@ import { Session } from "meteor/session";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./main.html";
 
-
 if (Meteor.isClient) {
   Template.news.onCreated(function newsOnCreated() {
     HTTP.call(
@@ -28,4 +27,11 @@ if (Meteor.isClient) {
       return Session.get('news')
     },
   });
+  Template.body.events({
+    'click #country': function (event) { 
+  console.log('Template.users_insert.events click .country this._id: ' + $(event.currentTarget).find(':selected').data("id"));
+    }
+  });
+
+
 }

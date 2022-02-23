@@ -1,9 +1,41 @@
 <head>
-  <title>simple-todos-blaze</title>
+  <title>Lorem İpsum</title>
   <script src="https://kit.fontawesome.com/484d2c08f0.js" crossorigin="anonymous"></script>
+  
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="./">Anasayfa</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+
+        <select class="input-xlarge country" id="country" name="country">
+          {{#each get_countries}}
+            <option value="{{iso3}}" data-id={{_id}}>{{name}}</option>
+          {{/each}}
+        </select>
+
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+
+
   <div class="container">
     <div class="row">
       <div class="col-md-8">
@@ -16,22 +48,6 @@
   </div>
 
 </body>
-
-
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
-
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
-</template>
 
 <template name="news">
   <div class="row">
@@ -52,3 +68,4 @@
 
   </div>
 </template>
+
