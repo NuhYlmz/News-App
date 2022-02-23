@@ -1,71 +1,92 @@
 <head>
   <title>Lorem İpsum</title>
-  <script src="https://kit.fontawesome.com/484d2c08f0.js" crossorigin="anonymous"></script>
-  
+  <script
+    src="https://kit.fontawesome.com/484d2c08f0.js"
+    crossorigin="anonymous"
+  ></script>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="./">Anasayfa</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-
-        <select class="input-xlarge country" id="country" name="country">
-          {{#each get_countries}}
-            <option value="{{iso3}}" data-id={{_id}}>{{name}}</option>
-          {{/each}}
-        </select>
-
+        <li>{{> categories}}</li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      <form class="form-inline my-2 my-lg-0">{{> countiries}}</form>
     </div>
   </nav>
 
-
-
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
-        {{> news}}
-      </div>
+      <div class="col-md-8">{{> news}}</div>
       <div class="col-md-4">
-        right
+        <div class="box">
+          <input
+            class="form-control"
+            type="search"
+            placeholder="Enter you location"
+          />
+          <button class="btn btn-success mt-2" type="submit">Submit</button>
+        </div>
       </div>
     </div>
   </div>
-
 </body>
 
 <template name="news">
-  <div class="row">
+  <div class="row news">
     {{#each item in news}}
-    <div class="col-md-6 ">
+    <div class="col-md-6">
       <div class="card">
-        <a href="{{item.url}}">
-         <img src="{{item.image}}" class="card-img-top w-100" alt="{{item.name}}">
+        <a target="_blank" href="{{item.url}}">
+          <img
+            src="{{item.image}}"
+            class="card-img-top w-100"
+            alt="{{item.name}}"
+          />
         </a>
         <div class="card-body">
           <h5 class="card-title">{{item.name}}</h5>
-          <p class="card-text">{{item.description}} </p>
+          <p class="card-text">{{item.description}}</p>
+          <p class="m-0">
+            <small class="text-muted">Haber Kaynağı: {{item.source}}</small>
+          </p>
         </div>
-        <p class="card-text"><small class="text-muted">Haber Kaynağı: {{item.source}}</small></p>
       </div>
     </div>
     {{/each}}
-
   </div>
 </template>
 
+<template name="countiries">
+  <select class="input-xlarge country form-control" id="country" name="country">
+    {{#each item in countiries}}
+    <option value="{{item.tag}}">{{item.name}}</option>
+    {{/each}}
+  </select>
+</template>
+
+<template name="categories">
+  <select
+    class="input-xlarge category ml-2 form-control"
+    id="category"
+    name="category"
+  >
+    {{#each item in categories}}
+    <option value="{{item.tag}}">{{item.name}}</option>
+    {{/each}}
+  </select>
+</template>
